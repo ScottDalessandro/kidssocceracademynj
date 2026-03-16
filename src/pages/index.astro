@@ -1,0 +1,296 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import programs from '../data/programs.json';
+
+const soccerPrograms = programs.filter(p => !p.isAddon).sort((a, b) => a.order - b.order);
+
+const colorMap: Record<string, string> = {
+  pink: 'bg-pink-500',
+  orange: 'bg-orange-500',
+  sky: 'bg-sky-500',
+  emerald: 'bg-emerald-500',
+  violet: 'bg-violet-500',
+  amber: 'bg-amber-500',
+};
+---
+
+<BaseLayout title="Bergen County's #1 Rated Indoor Soccer Academy">
+
+  <!-- Background Elements with added color -->
+  <div class="absolute inset-0 z-0 pointer-events-none" style="background-image: radial-gradient(#64748B 1px, transparent 1px); background-size: 24px 24px; opacity: 0.05;"></div>
+  <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-sky-300/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/3 z-0 pointer-events-none"></div>
+  <div class="absolute top-40 right-0 w-[600px] h-[600px] bg-pink-300/15 rounded-full blur-3xl translate-x-1/3 z-0 pointer-events-none hidden md:block"></div>
+
+  <!-- Hero Section -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-20">
+    <div class="flex flex-col-reverse md:flex-row items-center gap-10 md:gap-12">
+
+      <!-- Left Content -->
+      <div class="w-full md:w-[55%] flex flex-col items-start mt-2 md:mt-0">
+        <p class="text-xs font-medium uppercase tracking-[0.08em] text-sky-400 mb-4 opacity-0 animate-[fadeUp_600ms_ease-out_forwards]">
+          BERGEN COUNTY'S #1 RATED SOCCER ACADEMY
+        </p>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1] opacity-0 animate-[fadeUp_600ms_ease-out_forwards]">
+          Every age. Every stage.<br/>One place.
+        </h1>
+        <p class="text-lg font-light text-slate-500 max-w-[480px] mt-4 leading-[1.6] opacity-0 animate-[fadeUp_600ms_ease-out_200ms_forwards]">
+          Indoor soccer training in Wyckoff for ages 18 months through high school.
+        </p>
+
+        <!-- Google Rating -->
+        <div class="flex items-center gap-3 mt-5 opacity-0 animate-[fadeUp_600ms_ease-out_400ms_forwards]">
+          <div class="flex gap-0.5 text-yellow-400">
+            {[...Array(5)].map(() => <iconify-icon icon="solar:star-bold" width="20"></iconify-icon>)}
+          </div>
+          <div class="flex items-center gap-1.5">
+            <iconify-icon icon="logos:google-icon" width="16"></iconify-icon>
+            <span class="text-sm font-medium text-slate-900">5.0 · 33 Google Reviews</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-7 flex flex-col items-start opacity-0 animate-[fadeUp_600ms_ease-out_600ms_forwards]">
+          <a href="/free-trial" class="group inline-flex items-center justify-center bg-pink-500 text-white text-base font-medium px-8 py-4 rounded-xl hover:bg-pink-600 hover:scale-[1.02] transition-all duration-300 shadow-md hover:shadow-lg">
+            Book a Free Trial
+            <iconify-icon icon="solar:arrow-right-linear" width="20" class="ml-2 group-hover:translate-x-1 transition-transform duration-300"></iconify-icon>
+          </a>
+          <p class="text-xs font-light text-slate-500 mt-2">No payment required. Takes 30 seconds.</p>
+        </div>
+      </div>
+
+      <!-- Right Video -->
+      <div class="w-full md:w-[45%] opacity-0 animate-[scaleIn_800ms_ease-out_forwards]">
+        <div class="relative w-full h-64 md:h-[480px] max-h-[300px] md:max-h-none rounded-2xl shadow-xl overflow-hidden border border-slate-200/50 md:rotate-1 hover:rotate-0 transition-transform duration-500">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="/images/hero-poster.jpg"
+            class="hero-video w-full h-full object-cover"
+            preload="metadata"
+          >
+            <source src="/videos/hero-reel.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Reviews Strip -->
+  <section class="relative z-10 w-full bg-pink-50/50 border-t border-slate-100 py-14">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Rating Header -->
+      <div class="flex items-center justify-center gap-3 mb-10">
+        <iconify-icon icon="logos:google-icon" width="20"></iconify-icon>
+        <span class="text-base font-semibold text-slate-900">Rated 5.0</span>
+        <div class="flex gap-0.5 text-yellow-400">
+          <iconify-icon icon="solar:star-bold" width="18"></iconify-icon>
+          <iconify-icon icon="solar:star-bold" width="18"></iconify-icon>
+          <iconify-icon icon="solar:star-bold" width="18"></iconify-icon>
+          <iconify-icon icon="solar:star-bold" width="18"></iconify-icon>
+          <iconify-icon icon="solar:star-bold" width="18"></iconify-icon>
+        </div>
+        <span class="text-base font-normal text-slate-500">on Google · 33 Reviews</span>
+      </div>
+      <!-- Review Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="scroll-fade bg-white border border-slate-200 rounded-xl p-6 opacity-0 translate-y-4 transition-all duration-500 ease-out" style="transition-delay: 0ms;">
+          <p class="text-base font-light italic text-slate-700 leading-relaxed">"The coaches are amazing — patient, encouraging, and so easy to work with."</p>
+          <div class="flex items-center justify-between mt-4">
+            <div class="flex gap-0.5 text-yellow-400">
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+            </div>
+            <span class="text-sm font-normal text-slate-400">— Google Review</span>
+          </div>
+        </div>
+        <div class="scroll-fade bg-white border border-slate-200 rounded-xl p-6 opacity-0 translate-y-4 transition-all duration-500 ease-out" style="transition-delay: 150ms;">
+          <p class="text-base font-light italic text-slate-700 leading-relaxed">"Such a clean facility and incredible staff."</p>
+          <div class="flex items-center justify-between mt-4">
+            <div class="flex gap-0.5 text-yellow-400">
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+            </div>
+            <span class="text-sm font-normal text-slate-400">— Google Review</span>
+          </div>
+        </div>
+        <div class="scroll-fade bg-white border border-slate-200 rounded-xl p-6 opacity-0 translate-y-4 transition-all duration-500 ease-out" style="transition-delay: 300ms;">
+          <p class="text-base font-light italic text-slate-700 leading-relaxed">"My 10-year-old son enjoyed the summer camp!"</p>
+          <div class="flex items-center justify-between mt-4">
+            <div class="flex gap-0.5 text-yellow-400">
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+              <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>
+            </div>
+            <span class="text-sm font-normal text-slate-400">— Google Review</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Timeline -->
+  <section id="timeline-section" class="relative z-10 w-full bg-white py-20 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div id="timeline-header" class="flex flex-col items-center text-center mb-16 opacity-0 translate-y-4 transition-all duration-700 ease-out">
+        <p class="text-xs font-medium uppercase tracking-[0.08em] text-sky-400 mb-3">PROGRAMS</p>
+        <h2 class="text-4xl font-bold tracking-tight text-slate-900 mb-3">From Tiny Kickers to travel team</h2>
+        <p class="text-lg font-light text-slate-500">One place your family never outgrows.</p>
+      </div>
+
+      <div class="relative flex flex-col md:flex-row md:justify-between w-full mt-12 gap-10 md:gap-0">
+
+        {soccerPrograms.map((p, i) => (
+          <div class="relative z-10 flex flex-row md:flex-col items-start md:items-center w-full md:w-[18%] group node-item opacity-0 transition-opacity duration-500">
+            <div class={`flex-shrink-0 w-28 h-28 rounded-full shadow-md transition-transform duration-300 group-hover:scale-110 relative z-20 flex items-center justify-center ${colorMap[p.color]}`}>
+              <iconify-icon icon={p.icon} width="48" class="text-white"></iconify-icon>
+            </div>
+            <div class="ml-6 md:ml-0 md:mt-6 flex flex-col items-start md:items-center text-left md:text-center w-full">
+              <h4 class="text-base font-semibold text-slate-900 leading-tight">{p.name}</h4>
+              <span class="text-sm font-normal text-sky-400 mt-1">{p.ageRange}</span>
+              <p class="hidden md:block max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-3 text-sm font-light text-slate-500 leading-relaxed">
+                {p.timelineTeaser}
+              </p>
+              <a href={`/programs/${p.slug}`} class="inline-flex items-center text-xs font-medium text-pink-500 mt-0 opacity-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out group-hover:max-h-10 group-hover:opacity-100 group-hover:mt-2">
+                Learn more <iconify-icon icon="solar:arrow-right-linear" width="14" class="ml-1"></iconify-icon>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Kids Fitness Callout -->
+      <div class="mt-12 flex justify-center opacity-0 translate-y-4 transition-all duration-700 ease-out timeline-badge">
+        <a href="/programs/kids-fitness" class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-slate-50 border border-slate-200 hover:border-pink-200 hover:bg-pink-50 transition-colors duration-300 group">
+          <img src="/kids-fitness-logo.avif" alt="Kids Fitness Academy" class="h-10 w-auto" />
+          <span class="text-sm font-medium text-slate-900">Plus: Kids Fitness Academy for all ages</span>
+          <span class="text-xs font-medium text-pink-500 ml-2 flex items-center">
+            Learn more <iconify-icon icon="solar:arrow-right-linear" width="14" class="ml-1 transition-transform duration-300 group-hover:translate-x-1"></iconify-icon>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="relative z-10 w-full bg-sky-50">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="scroll-fade flex flex-col items-center text-center mb-16 opacity-0 translate-y-4 transition-all duration-700 ease-out">
+        <p class="text-xs font-medium uppercase tracking-widest text-sky-400 mb-3">WHY US</p>
+        <h2 class="text-4xl font-bold tracking-tight text-slate-900">Why Bergen County families choose us</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {[
+          { icon: 'solar:home-2-linear', title: 'Dedicated Indoor Facility', text: 'Three turf fields. Padded walls. Climate-controlled. No rain cancellations, no mud. Year-round training.' },
+          { icon: 'solar:users-group-rounded-linear', title: 'Coaches Who Know Your Kid', text: 'Not a franchise with rotating staff. Our coaches are here every week. They know your child by name.' },
+          { icon: 'solar:arrow-right-up-linear', title: '18 Months to High School', text: 'The one place your family never outgrows. Start as a Tiny Kicker. Train through high school.' },
+          { icon: 'solar:gift-linear', title: 'Free Trial — No Catch', text: 'No payment. No commitment. No sales pitch. Just bring your child and watch them play.' },
+        ].map((item, i) => (
+          <div class="scroll-fade flex flex-col items-center text-center opacity-0 translate-y-4 transition-all duration-500 ease-out" style={`transition-delay: ${i * 150}ms;`}>
+            <div class="why-us-icon w-16 h-16 rounded-full bg-sky-100 flex items-center justify-center text-sky-400 transition-transform duration-700 ease-out scale-[0.8]">
+              <iconify-icon icon={item.icon} width="32"></iconify-icon>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mt-4">{item.title}</h3>
+            <p class="text-sm md:text-base font-light text-slate-500 leading-relaxed mt-2 max-w-[260px] mx-auto">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Facility Gallery -->
+  <section class="relative z-10 w-full bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="scroll-fade flex flex-col items-center text-center mb-12 opacity-0 translate-y-4 transition-all duration-700 ease-out">
+        <h2 class="text-[2.5rem] font-bold tracking-tight text-slate-900 leading-tight">See where they play.</h2>
+        <p class="text-lg font-normal text-slate-500 mt-4 max-w-2xl mx-auto">
+          A modern indoor facility in Wyckoff designed for one thing: kids who love soccer.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { label: 'Indoor turf field — wide shot', span: 2 },
+          { label: 'Kids training on turf', span: 1 },
+          { label: 'Coach working with small group', span: 1 },
+          { label: 'Parent lounge / viewing area', span: 2 },
+          { label: 'Close-up: kid kicking ball', span: 2 },
+          { label: 'Facility entrance / exterior', span: 1 },
+        ].map((item, i) => (
+          <div class={`scroll-fade group relative h-[280px] rounded-xl shadow-sm overflow-hidden bg-slate-200 md:col-span-${item.span} opacity-0 translate-y-4 transition-all duration-500 ease-out`} style={`transition-delay: ${i * 100}ms;`}>
+            <div class="absolute inset-0 flex items-center justify-center bg-slate-200 transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]">
+              <span class="text-sm md:text-base font-medium text-slate-500 px-4 text-center">{item.label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Reviews Showcase -->
+  <section class="relative z-10 w-full bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="scroll-fade flex flex-col items-center text-center mb-16 opacity-0 translate-y-4 transition-all duration-700 ease-out">
+        <h2 class="text-4xl font-bold tracking-tight text-slate-900">Don't take our word for it. Take theirs.</h2>
+        <p class="text-lg font-light text-slate-500 mt-4">5.0 stars across 33 Google reviews. Here's what parents are saying.</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {[
+          '"The coaches are amazing; patient, encouraging, and so easy to work with."',
+          '"Such a clean facility and incredible staff."',
+          '"My 10-year-old son enjoyed the summer camp!"',
+        ].map((review, i) => (
+          <div class={`scroll-fade relative bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 opacity-0 translate-y-4 transition-all duration-500 ease-out flex flex-col h-full`} style={`transition-delay: ${i * 150}ms;`}>
+            <iconify-icon icon="logos:google-icon" width="20" class="absolute top-8 right-8 opacity-30"></iconify-icon>
+            <div class="flex gap-0.5 text-yellow-400">
+              {[...Array(5)].map(() => <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>)}
+            </div>
+            <p class="text-base font-light italic text-slate-700 leading-relaxed mt-4 flex-1">{review}</p>
+            <div class="mt-5 text-sm font-normal text-slate-400">— Google Review</div>
+          </div>
+        ))}
+      </div>
+      <div class="scroll-fade mt-12 flex flex-col items-center text-center opacity-0 translate-y-4 transition-all duration-500 ease-out" style="transition-delay: 450ms;">
+        <a href="https://www.google.com/maps/place/Kids+Soccer+Academy/" target="_blank" rel="noopener" class="text-sm font-medium text-pink-500 hover:underline inline-flex items-center">
+          Read all 33 reviews on Google
+          <iconify-icon icon="solar:arrow-right-linear" width="16" class="ml-1"></iconify-icon>
+        </a>
+        <div class="mt-3 flex items-center justify-center gap-1.5 text-xs font-normal text-slate-400">
+          <iconify-icon icon="logos:google-icon" width="12" class="opacity-60 grayscale"></iconify-icon>
+          Reviews from Google
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Block -->
+  <CtaBlock />
+
+</BaseLayout>
+
+<style>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+
+<script>
+  const video = document.querySelector('.hero-video') as HTMLVideoElement;
+  if (video && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.pause();
+  }
+</script>

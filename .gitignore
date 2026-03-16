@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Astro
+.astro/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Playwright MCP
+.playwright-mcp/
+
+# Scraped media (large files)
+scraped_media/
+
+# Research/competitor assets in root
+*.png
+*.avif
+goldfish-hero.png
+download_*.sh
+free-trial.html
+index.html
+capcut-video-outline.md

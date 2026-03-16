@@ -1,0 +1,29 @@
+---
+interface Props {
+  heading?: string;
+  body?: string;
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  heading = 'Ready to see it for yourself?',
+  body = 'Book a free trial class. No payment required. No commitment. Just show up with your child, watch them play on our turf, and see why 33 families gave us 5 stars.',
+  buttonText = 'Book Your Free Trial',
+  buttonHref = '/free-trial',
+} = Astro.props;
+---
+
+<section class="relative z-10 w-full bg-slate-900">
+  <div class="max-w-3xl mx-auto px-6 py-20 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">{heading}</h2>
+    <p class="text-base md:text-lg font-light text-slate-300 mt-4 leading-relaxed">{body}</p>
+    <div class="mt-8">
+      <a href={buttonHref} class="group inline-flex items-center justify-center bg-pink-500 text-white text-base font-medium px-8 py-4 rounded-xl hover:bg-pink-600 hover:scale-[1.02] transition-all duration-300 shadow-md hover:shadow-lg">
+        {buttonText}
+        <iconify-icon icon="solar:arrow-right-linear" width="20" class="ml-2 group-hover:translate-x-1 transition-transform duration-300"></iconify-icon>
+      </a>
+      <p class="text-xs font-light text-slate-400 mt-3">Free. No payment info required. Takes 30 seconds.</p>
+    </div>
+  </div>
+</section>

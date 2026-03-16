@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+---
+
+<BaseLayout title="Birthday Parties">
+
+  <!-- Hero -->
+  <section class="relative z-10 w-full bg-white">
+    <div class="max-w-7xl mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-16">
+      <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+        <p class="text-xs font-medium uppercase tracking-[0.08em] text-sky-400 mb-3">BIRTHDAY PARTIES</p>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1]">The Birthday Party They'll Actually Remember</h1>
+        <p class="text-lg font-light text-slate-500 mt-5 leading-relaxed max-w-2xl">Give your child the ultimate soccer birthday party at Kids Soccer Academy. Coach-led games on indoor turf, a dedicated party area, and zero stress for parents.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="relative z-10 w-full bg-sky-50 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="flex flex-col items-center text-center mb-16">
+        <p class="text-xs font-medium uppercase tracking-widest text-sky-400 mb-3">WHAT'S INCLUDED</p>
+        <h2 class="text-4xl font-bold tracking-tight text-slate-900">Everything for the perfect party</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          { icon: 'solar:football-linear', title: 'Turf Time', text: 'Exclusive use of an indoor turf field for your party group.' },
+          { icon: 'solar:user-speak-linear', title: 'Coach-Led Games', text: 'A dedicated coach runs fun, age-appropriate soccer games and activities.' },
+          { icon: 'solar:broom-linear', title: 'Setup & Cleanup', text: 'We handle all the setup and cleanup so you can focus on the fun.' },
+          { icon: 'solar:home-2-linear', title: 'Dedicated Party Area', text: 'A private party space for cake, presents, and celebration time.' },
+          { icon: 'solar:gamepad-linear', title: 'Custom Game Formats', text: 'From mini tournaments to relay races — we tailor games to the group.' },
+          { icon: 'solar:music-note-linear', title: 'Music & Fun', text: 'We bring the energy with music and a party atmosphere kids love.' },
+        ].map((item, i) => (
+          <div class="scroll-fade flex items-start gap-4 opacity-0 translate-y-4 transition-all duration-500 ease-out" style={`transition-delay: ${i * 100}ms;`}>
+            <div class="w-12 h-12 rounded-xl bg-sky-100 flex items-center justify-center text-sky-400 flex-shrink-0">
+              <iconify-icon icon={item.icon} width="24"></iconify-icon>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold text-slate-900">{item.title}</h3>
+              <p class="text-sm font-light text-slate-500 leading-relaxed mt-1">{item.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Package Cards -->
+  <section class="relative z-10 w-full bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="flex flex-col items-center text-center mb-16">
+        <p class="text-xs font-medium uppercase tracking-widest text-sky-400 mb-3">PACKAGES</p>
+        <h2 class="text-4xl font-bold tracking-tight text-slate-900">Choose Your Party Package</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Kickoff Party -->
+        <div class="scroll-fade bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col opacity-0 translate-y-4 transition-all duration-500 ease-out">
+          <h3 class="text-xl font-bold text-slate-900">Kickoff Party</h3>
+          <div class="mt-4">
+            <span class="text-4xl font-bold text-slate-900">$299</span>
+          </div>
+          <ul class="mt-6 flex flex-col gap-3 flex-1">
+            {['60 min turf time', '30 min party room', 'Up to 12 kids', 'Dedicated coach', 'Setup & cleanup included'].map(feature => (
+              <li class="flex items-center gap-2 text-sm font-light text-slate-600">
+                <iconify-icon icon="solar:check-circle-bold" width="18" class="text-sky-400 flex-shrink-0"></iconify-icon>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="mt-8 inline-flex items-center justify-center w-full bg-slate-100 text-slate-900 text-sm font-medium py-3.5 rounded-xl hover:bg-slate-200 transition-colors duration-200">
+            Inquire Now
+          </a>
+        </div>
+
+        <!-- All-Star Party (Most Popular) -->
+        <div class="scroll-fade bg-white rounded-xl shadow-sm border-2 border-pink-500 p-8 flex flex-col relative opacity-0 translate-y-4 transition-all duration-500 ease-out" style="transition-delay: 150ms;">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-500 text-white text-xs font-semibold px-4 py-1 rounded-full">MOST POPULAR</span>
+          <h3 class="text-xl font-bold text-slate-900">All-Star Party</h3>
+          <div class="mt-4">
+            <span class="text-4xl font-bold text-slate-900">$399</span>
+          </div>
+          <ul class="mt-6 flex flex-col gap-3 flex-1">
+            {['90 min turf time', '30 min party room', 'Up to 18 kids', 'Dedicated coach', 'Setup & cleanup included', 'Custom game formats'].map(feature => (
+              <li class="flex items-center gap-2 text-sm font-light text-slate-600">
+                <iconify-icon icon="solar:check-circle-bold" width="18" class="text-pink-500 flex-shrink-0"></iconify-icon>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="mt-8 inline-flex items-center justify-center w-full bg-pink-500 text-white text-sm font-medium py-3.5 rounded-xl hover:bg-pink-600 transition-colors duration-200 shadow-sm">
+            Inquire Now
+          </a>
+        </div>
+
+        <!-- Championship Party -->
+        <div class="scroll-fade bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col opacity-0 translate-y-4 transition-all duration-500 ease-out" style="transition-delay: 300ms;">
+          <h3 class="text-xl font-bold text-slate-900">Championship Party</h3>
+          <div class="mt-4">
+            <span class="text-4xl font-bold text-slate-900">$499</span>
+          </div>
+          <ul class="mt-6 flex flex-col gap-3 flex-1">
+            {['90 min turf time', '45 min party room', 'Up to 24 kids', 'Dedicated coach', 'Setup & cleanup included', 'Custom game formats', 'Music & party extras'].map(feature => (
+              <li class="flex items-center gap-2 text-sm font-light text-slate-600">
+                <iconify-icon icon="solar:check-circle-bold" width="18" class="text-sky-400 flex-shrink-0"></iconify-icon>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="mt-8 inline-flex items-center justify-center w-full bg-slate-100 text-slate-900 text-sm font-medium py-3.5 rounded-xl hover:bg-slate-200 transition-colors duration-200">
+            Inquire Now
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="relative z-10 w-full bg-slate-50 border-t border-slate-100">
+    <div class="max-w-3xl mx-auto px-6 py-20">
+      <blockquote class="scroll-fade text-center opacity-0 translate-y-4 transition-all duration-500 ease-out">
+        <iconify-icon icon="solar:quote-up-circle-linear" width="40" class="text-pink-500/30 mb-4 mx-auto block"></iconify-icon>
+        <p class="text-xl md:text-2xl font-light italic text-slate-700 leading-relaxed">"Best birthday party we've ever had. The kids were exhausted in the best way."</p>
+        <div class="mt-6 flex items-center justify-center gap-1 text-yellow-400">
+          {[...Array(5)].map(() => <iconify-icon icon="solar:star-bold" width="16"></iconify-icon>)}
+        </div>
+        <p class="text-sm font-normal text-slate-400 mt-2">— KSA Party Parent</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="relative z-10 w-full bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="flex flex-col items-center text-center mb-12">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900">Party in Action</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          'Kids playing soccer games at a party',
+          'Birthday celebration in party area',
+          'Group photo on the turf',
+        ].map((label, i) => (
+          <div class={`scroll-fade group relative h-[240px] rounded-xl shadow-sm overflow-hidden bg-slate-200 opacity-0 translate-y-4 transition-all duration-500 ease-out`} style={`transition-delay: ${i * 100}ms;`}>
+            <div class="absolute inset-0 flex items-center justify-center bg-slate-200 transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]">
+              <span class="text-sm md:text-base font-medium text-slate-500 px-4 text-center">{label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBlock heading="Want to book a party?" body="Contact us to reserve your date." buttonText="Contact Us" buttonHref="/contact" />
+
+</BaseLayout>

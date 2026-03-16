@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+---
+
+<BaseLayout title="About Us">
+
+  <!-- Hero -->
+  <section class="relative z-10 w-full bg-white">
+    <div class="max-w-7xl mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-16">
+      <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+        <p class="text-xs font-medium uppercase tracking-[0.08em] text-sky-400 mb-3">OUR STORY</p>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1]">Built for Kids. Run by Parents Who Get It.</h1>
+        <p class="text-lg font-light text-slate-500 mt-5 leading-relaxed max-w-2xl">Kids Soccer Academy is a locally owned, dedicated indoor soccer facility in Wyckoff, NJ. We're not a franchise. We're parents who built the place we wished existed for our own kids — and opened the doors for yours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facility Highlights -->
+  <section class="relative z-10 w-full bg-sky-50 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="flex flex-col items-center text-center mb-16">
+        <p class="text-xs font-medium uppercase tracking-widest text-sky-400 mb-3">THE FACILITY</p>
+        <h2 class="text-4xl font-bold tracking-tight text-slate-900">A space designed for kids</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {[
+          { icon: 'solar:football-linear', title: 'Three Indoor Turf Fields', text: 'Year-round play regardless of weather. No rain delays, no muddy cleats. Just soccer, every day.' },
+          { icon: 'solar:shield-check-linear', title: 'Padded Walls & Safety First', text: 'Every surface is designed with kids in mind. Padded walls, safe turf, and age-appropriate equipment.' },
+          { icon: 'solar:temperature-linear', title: 'Climate-Controlled Comfort', text: 'A comfortable temperature year-round with a dedicated parent viewing area so you never miss a moment.' },
+          { icon: 'solar:map-point-linear', title: 'Convenient Wyckoff Location', text: 'Easy parking, easy access. Located at 681 Lawlins Rd in the heart of Wyckoff.' },
+        ].map((item, i) => (
+          <div class="scroll-fade flex flex-col items-center text-center opacity-0 translate-y-4 transition-all duration-500 ease-out" style={`transition-delay: ${i * 150}ms;`}>
+            <div class="w-16 h-16 rounded-full bg-sky-100 flex items-center justify-center text-sky-400">
+              <iconify-icon icon={item.icon} width="32"></iconify-icon>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mt-4">{item.title}</h3>
+            <p class="text-sm md:text-base font-light text-slate-500 leading-relaxed mt-2 max-w-[260px] mx-auto">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet Our Coaches -->
+  <section class="relative z-10 w-full bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="flex flex-col items-center text-center mb-16">
+        <p class="text-xs font-medium uppercase tracking-widest text-sky-400 mb-3">OUR TEAM</p>
+        <h2 class="text-4xl font-bold tracking-tight text-slate-900">Meet Our Coaches</h2>
+        <p class="text-lg font-light text-slate-500 mt-4">The people who make it all happen — week after week.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          { name: 'Coach Mike', role: 'Head Coach', years: '8 years experience', bio: 'Mike leads our coaching team with a passion for youth development. His philosophy: every child deserves to feel confident with the ball at their feet.' },
+          { name: 'Coach Sarah', role: 'Youth Development', years: '5 years experience', bio: 'Sarah specializes in our youngest players. She brings patience, creativity, and infectious energy to every Tiny Kickers and Little Legends session.' },
+          { name: 'Coach Alex', role: 'Fitness & Conditioning', years: '6 years experience', bio: 'Alex runs our Kids Fitness Academy and conditioning programs. His background in sports science helps young athletes build speed, agility, and strength.' },
+        ].map((coach, i) => (
+          <div class="scroll-fade bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col items-center text-center opacity-0 translate-y-4 transition-all duration-500 ease-out" style={`transition-delay: ${i * 150}ms;`}>
+            <div class="w-24 h-24 rounded-full bg-slate-200 flex items-center justify-center text-slate-400 mb-5">
+              <iconify-icon icon="solar:user-circle-linear" width="48"></iconify-icon>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">{coach.name}</h3>
+            <p class="text-sm font-medium text-pink-500 mt-1">{coach.role}</p>
+            <p class="text-xs font-medium text-sky-400 mt-1">{coach.years}</p>
+            <p class="text-sm font-light text-slate-500 leading-relaxed mt-4">{coach.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="relative z-10 w-full bg-slate-50 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="flex flex-col items-center text-center mb-12">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900">Inside the Academy</h2>
+        <p class="text-base font-light text-slate-500 mt-3">A look at where your kids train, play, and grow.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          'Indoor turf fields — wide angle',
+          'Kids training session in progress',
+          'Parent viewing area and lounge',
+          'Coach working with young players',
+        ].map((label, i) => (
+          <div class={`scroll-fade group relative h-[260px] rounded-xl shadow-sm overflow-hidden bg-slate-200 opacity-0 translate-y-4 transition-all duration-500 ease-out`} style={`transition-delay: ${i * 100}ms;`}>
+            <div class="absolute inset-0 flex items-center justify-center bg-slate-200 transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]">
+              <span class="text-sm md:text-base font-medium text-slate-500 px-4 text-center">{label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBlock />
+
+</BaseLayout>

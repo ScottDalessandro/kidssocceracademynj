@@ -1,0 +1,135 @@
+[
+  {
+    "slug": "tiny-kickers",
+    "name": "Tiny Kickers",
+    "ageRange": "18 months – 2.5 years",
+    "sessionLength": "30 min",
+    "description": "Your toddler chases a ball. Stops. Kicks it. Looks up at you, beaming. That's a Tiny Kickers class. Coaches get down on the turf with your child — guiding, encouraging, never pushing. 30-minute sessions, small groups, clean padded turf.",
+    "longDescription": "Tiny Kickers is where the journey begins. In a safe, padded indoor environment, your toddler will explore movement, coordination, and social play through age-appropriate soccer activities. Our coaches understand that at this age, every child develops at their own pace — so sessions are playful, pressure-free, and designed to build confidence.\n\nParents stay and watch from our viewing area as their little ones discover the joy of chasing a ball, kicking with friends, and celebrating every small win. It's not about competition — it's about falling in love with movement.",
+    "whatTheyLearn": [
+      { "icon": "solar:feet-bold", "title": "Motor Skills", "description": "Running, stopping, kicking — the building blocks of movement" },
+      { "icon": "solar:users-group-rounded-bold", "title": "Social Play", "description": "Interacting with peers in a fun group setting" },
+      { "icon": "solar:hand-stars-bold", "title": "Listening Skills", "description": "Following simple instructions from a coach" },
+      { "icon": "solar:heart-bold", "title": "Confidence", "description": "Feeling brave in a new environment away from parents" }
+    ],
+    "color": "pink",
+    "icon": "solar:star-bold",
+    "programIcon": "/images/programs/tiny-kickers.png",
+    "timelineTeaser": "First kicks, first friends, first love of the game.",
+    "testimonial": "\"The coaches are amazing — patient, encouraging, and so easy to work with.\"",
+    "order": 1,
+    "nextProgram": "mini-strikers",
+    "prevProgram": null
+  },
+  {
+    "slug": "mini-strikers",
+    "name": "Mini Strikers",
+    "ageRange": "2.5 – 4 years",
+    "sessionLength": "35 min",
+    "description": "They're running now. They want to kick harder. Mini Strikers channels all that energy into real footwork, teamwork basics, and games they actually understand. Your kid will come home and ask to practice in the hallway.",
+    "longDescription": "Mini Strikers builds on the foundation of Tiny Kickers with more structured activities and skill development. At this age, kids are ready for more — more running, more games, more interaction with teammates. Our coaches channel that boundless energy into purposeful play.\n\nSessions introduce basic dribbling, passing, and simple game concepts in a way that feels like pure fun. Kids learn to listen to instructions, take turns, and work together — skills that carry well beyond the turf.",
+    "whatTheyLearn": [
+      { "icon": "solar:football-bold", "title": "Ball Control", "description": "Basic dribbling and keeping the ball close" },
+      { "icon": "solar:users-group-rounded-bold", "title": "Teamwork", "description": "Introduction to passing and playing together" },
+      { "icon": "solar:chat-round-check-bold", "title": "Listening", "description": "Following multi-step instructions from coaches" },
+      { "icon": "solar:running-2-bold", "title": "Coordination", "description": "Building stamina and coordination through active play" }
+    ],
+    "color": "orange",
+    "icon": "solar:running-2-bold",
+    "programIcon": "/images/programs/mini-strikers.png",
+    "timelineTeaser": "All that energy channeled into real footwork.",
+    "testimonial": "\"Such a clean facility and incredible staff.\"",
+    "order": 2,
+    "nextProgram": "little-legends",
+    "prevProgram": "tiny-kickers"
+  },
+  {
+    "slug": "little-legends",
+    "name": "Little Legends",
+    "ageRange": "4 – 5 years",
+    "sessionLength": "40 min",
+    "description": "This is where it clicks. Your child starts reading the field, passing to teammates, celebrating goals they set up themselves. Little Legends builds the soccer brain — game sense, positioning, and a confidence that carries off the turf.",
+    "longDescription": "Little Legends marks a turning point. Kids at this age begin to understand the concept of a team, the thrill of scoring, and the satisfaction of making a great pass. Our coaches nurture this growth with structured drills that still feel like games.\n\nSessions focus on developing a \"soccer brain\" — reading the field, making decisions, and understanding basic positioning. Your child will surprise you with what they pick up. This is the age where you'll see them practicing moves at home, talking about their teammates, and counting down the days until their next class.",
+    "whatTheyLearn": [
+      { "icon": "solar:eye-bold", "title": "Game Sense", "description": "Reading the field and making smart decisions" },
+      { "icon": "solar:target-bold", "title": "Passing Accuracy", "description": "Passing to teammates and receiving the ball" },
+      { "icon": "solar:map-point-bold", "title": "Positioning", "description": "Spatial awareness and knowing where to be" },
+      { "icon": "solar:cup-star-bold", "title": "Sportsmanship", "description": "Celebrating teammates' success and playing fair" }
+    ],
+    "color": "sky",
+    "icon": "solar:cup-star-bold",
+    "programIcon": "/images/programs/little-legends.png",
+    "timelineTeaser": "This is where it clicks — passing, scoring, teamwork.",
+    "testimonial": "\"My kids absolutely love going every week. The coaches make it so fun.\"",
+    "order": 3,
+    "nextProgram": "mini-marvels",
+    "prevProgram": "mini-strikers"
+  },
+  {
+    "slug": "mini-marvels",
+    "name": "Mini Marvels",
+    "ageRange": "5 – 7 years",
+    "sessionLength": "45 min",
+    "description": "Real drills. Real scrimmages. Real improvement you can see week over week. Mini Marvels is structured training that still feels like the best part of their day.",
+    "longDescription": "Mini Marvels is where casual play becomes real training. Kids at this age are ready for more technical instruction — and they thrive on it. Sessions include focused drills on first touch, dribbling under pressure, and shooting, followed by scrimmages where they apply what they've learned.\n\nOur coaches push kids to improve while keeping the atmosphere positive and encouraging. You'll see measurable progress week over week — better ball control, smarter decisions, and a growing love for competitive play.",
+    "whatTheyLearn": [
+      { "icon": "solar:star-bold", "title": "Technical Skills", "description": "First touch, dribbling, and shooting with precision" },
+      { "icon": "solar:shield-star-bold", "title": "Defense", "description": "Defensive fundamentals and 1v1 play" },
+      { "icon": "solar:gamepad-bold", "title": "Game Tactics", "description": "Scrimmage tactics and understanding game flow" },
+      { "icon": "solar:bolt-bold", "title": "Resilience", "description": "Building mental toughness and handling competition" }
+    ],
+    "color": "emerald",
+    "icon": "solar:shield-star-bold",
+    "programIcon": "/images/programs/mini-marvels.png",
+    "timelineTeaser": "Real drills. Real scrimmages. Real improvement.",
+    "testimonial": "\"The improvement in my son's skills has been incredible. He looks forward to every session.\"",
+    "order": 4,
+    "nextProgram": "junior-dribblers",
+    "prevProgram": "little-legends"
+  },
+  {
+    "slug": "junior-dribblers",
+    "name": "Junior Dribblers",
+    "ageRange": "7 – 12 years",
+    "sessionLength": "50 min",
+    "description": "Technical training for kids who are serious about getting better. 50-minute sessions focused on first touch, footwork, game sense, and competitive play. This is where rec players become travel-ready.",
+    "longDescription": "Junior Dribblers is our most advanced youth program. Designed for kids who are serious about soccer — whether they're preparing for travel team tryouts, sharpening skills for their rec league, or simply passionate about the game.\n\nSessions are intensive and technical: footwork sequences, passing patterns, positional play, and competitive scrimmages. Our coaches bring experience and high expectations while maintaining a positive, growth-focused environment. This is where good players become great ones.",
+    "whatTheyLearn": [
+      { "icon": "solar:crown-bold", "title": "Ball Mastery", "description": "Advanced footwork and total ball control" },
+      { "icon": "solar:map-bold", "title": "Tactical Awareness", "description": "Positional play and reading the game at speed" },
+      { "icon": "solar:rocket-2-bold", "title": "Speed of Play", "description": "Thinking and executing faster under pressure" },
+      { "icon": "solar:medal-ribbons-star-bold", "title": "Travel Ready", "description": "Competitive mentality and travel team preparation" }
+    ],
+    "color": "violet",
+    "icon": "solar:football-bold",
+    "programIcon": "/images/programs/junior-dribblers.png",
+    "timelineTeaser": "Technical training for serious young players.",
+    "testimonial": "\"My 10-year-old son enjoyed the summer camp!\"",
+    "order": 5,
+    "nextProgram": null,
+    "prevProgram": "mini-marvels"
+  },
+  {
+    "slug": "kids-fitness",
+    "name": "Kids Fitness Academy",
+    "ageRange": "3 – 12 years",
+    "sessionLength": "45 min",
+    "description": "Not just soccer. Agility, coordination, speed, and strength — built for young athletes across all sports. A complete fitness program designed for how kids actually move.",
+    "longDescription": "Kids Fitness Academy is a cross-training program designed for young athletes of all sports — including soccer players who want an edge. Sessions focus on the fundamental movement skills that every sport demands: agility, coordination, speed, balance, and functional strength.\n\nThis isn't adult fitness scaled down. Every exercise and game is designed around how kids actually develop. It's the perfect complement to any soccer program — or a standalone option for families who want their kids active, strong, and confident in their bodies.",
+    "whatTheyLearn": [
+      { "icon": "solar:bolt-bold", "title": "Agility", "description": "Change-of-direction speed and quick footwork" },
+      { "icon": "solar:compass-bold", "title": "Coordination", "description": "Balance and coordination through fun challenges" },
+      { "icon": "solar:dumbbell-bold", "title": "Strength", "description": "Age-appropriate strength and flexibility training" },
+      { "icon": "solar:heart-bold", "title": "Athletic Confidence", "description": "Confidence in physical abilities across all sports" }
+    ],
+    "color": "amber",
+    "icon": "solar:bolt-bold",
+    "programIcon": "/images/programs/fitness-academy.png",
+    "timelineTeaser": "Cross-training for young athletes across all sports.",
+    "testimonial": "\"Great addition to our son's soccer training. He's faster and more coordinated.\"",
+    "order": 6,
+    "nextProgram": null,
+    "prevProgram": null,
+    "isAddon": true
+  }
+]

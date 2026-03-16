@@ -1,0 +1,40 @@
+---
+interface Step {
+  icon: string;
+  bgColor: string;
+  textColor: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  steps: Step[];
+}
+
+const { steps } = Astro.props;
+---
+
+<div id="success-message" class="hidden bg-white rounded-xl shadow-sm border border-slate-200 p-6 lg:p-8">
+  <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-5">
+    <iconify-icon icon="solar:check-circle-bold" width="36" class="text-emerald-500"></iconify-icon>
+  </div>
+  <h2 class="text-2xl font-medium tracking-tight text-slate-900 mb-2 text-center">You're In. Here's What Happens Next.</h2>
+  <div class="flex flex-col gap-5 mt-6 max-w-md mx-auto">
+    {steps.map((step) => (
+      <div class="flex gap-4">
+        <div class:list={['flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center', step.bgColor, step.textColor]}>
+          <iconify-icon icon={step.icon} width="20"></iconify-icon>
+        </div>
+        <div>
+          <h4 class="text-sm font-medium text-slate-900">{step.title}</h4>
+          <p class="text-sm font-extralight text-slate-500 mt-0.5">{step.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+  <div class="mt-8 pt-6 border-t border-slate-100 text-center">
+    <p class="text-sm font-extralight text-slate-500">
+      Questions? Call us at <a href="tel:+12016964195" class="font-medium text-pink-500 hover:underline">(201) 696-4195</a> — we're real people who pick up the phone.
+    </p>
+  </div>
+</div>

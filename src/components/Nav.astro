@@ -1,0 +1,143 @@
+---
+import programs from '../data/programs.json';
+const currentPath = Astro.url.pathname;
+const soccerPrograms = programs.filter(p => !p.isAddon).sort((a, b) => a.order - b.order);
+const fitnessProgram = programs.find(p => p.isAddon);
+
+function isActive(path: string) {
+  if (path === '/') return currentPath === '/';
+  return currentPath.startsWith(path);
+}
+---
+
+<nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-300 h-24 bg-white/95 backdrop-blur-sm shadow-sm">
+  <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center shrink-0">
+      <img src="/kids-soccer-academy-logo.avif" alt="Kids Soccer Academy" class="h-20 w-auto" />
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-7 ml-auto mr-8">
+      <!-- Programs Dropdown -->
+      <div class="relative group">
+        <button class={`text-sm font-normal transition-colors duration-200 flex items-center gap-1 ${isActive('/programs') ? 'text-pink-500' : 'text-slate-700 hover:text-pink-500'}`}>
+          Programs
+          <iconify-icon icon="solar:alt-arrow-down-linear" width="16" class="transition-transform duration-200 group-hover:rotate-180"></iconify-icon>
+        </button>
+        <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="bg-white rounded-xl shadow-lg border border-slate-100 py-2 min-w-[220px]">
+            {soccerPrograms.map(p => (
+              <a href={`/programs/${p.slug}`} class={`block px-4 py-2.5 text-sm transition-colors duration-200 ${currentPath === `/programs/${p.slug}` ? 'text-pink-500 bg-pink-50' : 'text-slate-700 hover:text-pink-500 hover:bg-slate-50'}`}>
+                <span class="font-medium">{p.name}</span>
+                <span class="text-xs text-slate-400 ml-2">{p.ageRange}</span>
+              </a>
+            ))}
+            {fitnessProgram && (
+              <>
+                <div class="border-t border-slate-100 my-1"></div>
+                <a href={`/programs/${fitnessProgram.slug}`} class={`block px-4 py-2.5 text-sm transition-colors duration-200 ${currentPath === `/programs/${fitnessProgram.slug}` ? 'text-pink-500 bg-pink-50' : 'text-slate-700 hover:text-pink-500 hover:bg-slate-50'}`}>
+                  <span class="font-medium">{fitnessProgram.name}</span>
+                  <span class="text-xs text-slate-400 ml-2">{fitnessProgram.ageRange}</span>
+                </a>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <a href="/schedule" class={`text-sm font-normal transition-colors duration-200 ${isActive('/schedule') ? 'text-pink-500' : 'text-slate-700 hover:text-pink-500'}`}>Schedule</a>
+      <a href="/about" class={`text-sm font-normal transition-colors duration-200 ${isActive('/about') ? 'text-pink-500' : 'text-slate-700 hover:text-pink-500'}`}>About</a>
+      <a href="/birthday-parties" class={`text-sm font-normal transition-colors duration-200 ${isActive('/birthday-parties') ? 'text-pink-500' : 'text-slate-700 hover:text-pink-500'}`}>Birthday Parties</a>
+      <a href="/faq" class={`text-sm font-normal transition-colors duration-200 ${isActive('/faq') ? 'text-pink-500' : 'text-slate-700 hover:text-pink-500'}`}>FAQ</a>
+      <a href="/contact" class={`text-sm font-normal transition-colors duration-200 ${isActive('/contact') ? 'text-pink-500' : 'text-slate-700 hover:text-pink-500'}`}>Contact</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <div class="hidden lg:block shrink-0">
+      <a href="/free-trial" class="bg-pink-500 text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-pink-600 transition-colors duration-200">
+        Book Free Trial
+      </a>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center text-slate-700 hover:text-pink-500 transition-colors">
+      <iconify-icon icon="solar:hamburger-menu-linear" width="28"></iconify-icon>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden absolute top-24 left-0 w-full bg-white shadow-lg border-t border-slate-100 flex-col px-6 py-4 gap-2 lg:hidden max-h-[80vh] overflow-y-auto">
+    <a href="/" class="text-base font-normal text-slate-700 hover:text-pink-500 transition-colors duration-200 py-2">Home</a>
+
+    <!-- Mobile Programs Submenu -->
+    <button id="mobile-programs-btn" class="w-full text-left text-base font-normal text-slate-700 hover:text-pink-500 transition-colors duration-200 py-2 flex items-center justify-between">
+      Programs
+      <iconify-icon icon="solar:alt-arrow-down-linear" width="16" id="mobile-programs-arrow" class="transition-transform duration-200"></iconify-icon>
+    </button>
+    <div id="mobile-programs-submenu" class="hidden pl-4 flex flex-col gap-1">
+      {soccerPrograms.map(p => (
+        <a href={`/programs/${p.slug}`} class="text-sm text-slate-600 hover:text-pink-500 transition-colors duration-200 py-1.5">
+          {p.name} <span class="text-xs text-slate-400">({p.ageRange})</span>
+        </a>
+      ))}
+      {fitnessProgram && (
+        <a href={`/programs/${fitnessProgram.slug}`} class="text-sm text-slate-600 hover:text-pink-500 transition-colors duration-200 py-1.5">
+          {fitnessProgram.name} <span class="text-xs text-slate-400">({fitnessProgram.ageRange})</span>
+        </a>
+      )}
+    </div>
+
+    <a href="/schedule" class="text-base font-normal text-slate-700 hover:text-pink-500 transition-colors duration-200 py-2">Schedule</a>
+    <a href="/about" class="text-base font-normal text-slate-700 hover:text-pink-500 transition-colors duration-200 py-2">About</a>
+    <a href="/birthday-parties" class="text-base font-normal text-slate-700 hover:text-pink-500 transition-colors duration-200 py-2">Birthday Parties</a>
+    <a href="/faq" class="text-base font-normal text-slate-700 hover:text-pink-500 transition-colors duration-200 py-2">FAQ</a>
+    <a href="/contact" class="text-base font-normal text-slate-700 hover:text-pink-500 transition-colors duration-200 py-2">Contact</a>
+    <div class="pt-2 mt-2 border-t border-slate-100">
+      <a href="/free-trial" class="block w-full text-center bg-pink-500 text-white text-base font-medium px-5 py-3 rounded-lg hover:bg-pink-600 transition-colors duration-200">
+        Book Free Trial
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Nav scroll effect
+    const mainNav = document.getElementById('main-nav');
+    if (mainNav) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          mainNav.classList.add('bg-white', 'shadow-sm');
+          mainNav.classList.remove('bg-white/95', 'backdrop-blur-sm');
+        } else {
+          mainNav.classList.add('bg-white/95', 'backdrop-blur-sm');
+          mainNav.classList.remove('bg-white');
+        }
+      });
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('flex');
+      });
+    }
+
+    // Mobile programs submenu
+    const mobileProgramsBtn = document.getElementById('mobile-programs-btn');
+    const mobileProgramsSubmenu = document.getElementById('mobile-programs-submenu');
+    const mobileProgramsArrow = document.getElementById('mobile-programs-arrow');
+    if (mobileProgramsBtn && mobileProgramsSubmenu) {
+      mobileProgramsBtn.addEventListener('click', () => {
+        mobileProgramsSubmenu.classList.toggle('hidden');
+        mobileProgramsSubmenu.classList.toggle('flex');
+        mobileProgramsArrow?.classList.toggle('rotate-180');
+      });
+    }
+  });
+</script>

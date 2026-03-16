@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+import TrialForm from '../components/TrialForm.astro';
+import TrialSuccess from '../components/TrialSuccess.astro';
+import FaqCard from '../components/FaqCard.astro';
+import programs from '../data/programs.json';
+
+const allPrograms = programs.sort((a, b) => a.order - b.order);
+
+const whatHappensCards = [
+  { icon: 'solar:football-bold', color: 'bg-pink-100 text-pink-500', title: 'They Join a Real Class', text: "Your child doesn't sit on the sidelines. They jump into an actual session with kids their age — same drills, same games, same coaches.", photo: 'Photo: Kids in a drill circle on turf' },
+  { icon: 'solar:sofa-2-linear', color: 'bg-sky-100 text-sky-500', title: 'You Watch From Our Lounge', text: 'Grab a seat in our parent viewing area. Clean facility, padded turf, climate-controlled. You can see everything.', photo: 'Photo: Parent viewing lounge with window to turf' },
+  { icon: 'solar:heart-pulse-linear', color: 'bg-amber-100 text-amber-500', title: 'First-Timers Are Our Specialty', text: "Tears? Shyness? A kid who won't let go of your leg? Our coaches handle this every week. They'll meet your child where they are.", photo: 'Photo: Coach kneeling with shy toddler on turf' },
+  { icon: 'solar:shield-check-linear', color: 'bg-emerald-100 text-emerald-500', title: 'Zero Pressure. Seriously.', text: "No sales pitch after class. No awkward follow-up. Just an honest question: did your kid have fun? That's it.", photo: 'Photo: Kids high-fiving after a game' },
+];
+
+const faqItems = [
+  { question: 'What if my child cries or won\'t leave my side?', answer: 'It happens — and our coaches are ready for it. They work with first-timers every single week. Some kids jump right in. Others need a few minutes. Either way, there\'s no rush and no judgment.' },
+  { question: 'What does my child need to bring?', answer: 'Just comfortable clothes and sneakers. No cleats needed — our indoor turf is designed for regular shoes. We provide all the soccer equipment.' },
+  { question: 'Is this really free? What\'s the catch?', answer: 'No catch. No payment information. No commitment. We offer a free trial because we\'re confident in what happens on the turf. One class is usually all it takes.' },
+  { question: 'Not sure which program to pick?', answer: 'No problem. Tell us your child\'s age when you book and we\'ll place them in the right group. Every program is age-right — designed for exactly where your child is right now.' },
+];
+
+const successSteps = [
+  { icon: 'solar:letter-linear', bgColor: 'bg-sky-100', textColor: 'text-sky-500', title: 'Check your inbox', description: 'We\'ll confirm your trial class within 24 hours with the date, time, and what to expect.' },
+  { icon: 'solar:running-2-linear', bgColor: 'bg-pink-100', textColor: 'text-pink-500', title: 'Show up and play', description: 'Bring your child in comfortable clothes and sneakers. That\'s it. We handle everything else.' },
+  { icon: 'solar:eye-linear', bgColor: 'bg-amber-100', textColor: 'text-amber-500', title: 'Watch from our lounge', description: 'Grab a seat. Watch your child on the turf. See for yourself why 33 families gave us 5 stars.' },
+];
+---
+
+<BaseLayout title="Free Trial Class" description="Book a free trial soccer class for your child at Kids Soccer Academy in Wyckoff, NJ. No payment required, no commitment. Ages 18 months through high school.">
+
+  <!-- Background Decorations -->
+  <div class="absolute -top-[200px] -left-[200px] w-[600px] h-[600px] rounded-full bg-slate-900/5 blur-3xl pointer-events-none z-0"></div>
+  <div class="absolute inset-0 pointer-events-none z-0" style="background-image: radial-gradient(circle at 1px 1px, #94a3b8 1px, transparent 0); background-size: 24px 24px; opacity: 0.05;"></div>
+
+  <!-- Hero -->
+  <section class="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-16 lg:pt-36 lg:pb-24 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-8">
+
+    <!-- Left: Text -->
+    <div class="w-full lg:w-[55%] flex flex-col items-center lg:items-start text-center lg:text-left">
+      <span class="animate-fade-up text-xs font-medium uppercase tracking-[0.08em] text-sky-400 opacity-0">
+        Free Trial Class
+      </span>
+
+      <h1 class="animate-fade-up delay-100 mt-4 text-4xl lg:text-5xl font-medium tracking-tight text-slate-900 leading-[1.1] opacity-0">
+        Their First Class Could Change Everything
+      </h1>
+
+      <p class="animate-fade-up delay-200 mt-6 text-lg font-extralight text-slate-500 max-w-[520px] leading-[1.6] opacity-0">
+        One free session on our indoor turf in Wyckoff. Your child joins a real class with kids their age. You watch from our lounge. No payment, no commitment — just soccer.
+      </p>
+
+      <!-- Google Rating -->
+      <div class="animate-fade-up delay-400 mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-2 opacity-0">
+        <div class="flex items-center gap-0.5 text-yellow-400 text-lg">
+          {[...Array(5)].map(() => <iconify-icon icon="solar:star-bold"></iconify-icon>)}
+        </div>
+        <div class="flex items-center gap-1.5 ml-1">
+          <iconify-icon icon="logos:google-icon" class="text-sm"></iconify-icon>
+          <span class="text-sm font-normal text-slate-900">5.0 · 33 Google Reviews</span>
+        </div>
+      </div>
+
+      <!-- Urgency -->
+      <div class="animate-fade-up delay-400 mt-3 flex items-center justify-center lg:justify-start gap-1.5 opacity-0">
+        <iconify-icon icon="solar:clock-circle-linear" class="text-base text-slate-300"></iconify-icon>
+        <span class="text-sm font-extralight text-slate-400">Class sizes are small — spots fill each session.</span>
+      </div>
+
+      <!-- CTA -->
+      <div class="animate-fade-up delay-600 mt-8 w-full lg:w-auto flex flex-col items-center lg:items-start opacity-0">
+        <a href="#form-container" class="group relative flex items-center justify-center gap-2 bg-pink-500 text-white text-base font-normal py-4 px-8 w-full lg:w-auto rounded-xl hover:bg-pink-600 hover:scale-[1.02] shadow-md transition-all duration-300 ease-out">
+          <span>Save My Child's Spot</span>
+          <iconify-icon icon="solar:arrow-right-linear" class="text-xl transition-transform duration-300 ease-out group-hover:translate-x-1"></iconify-icon>
+        </a>
+        <p class="mt-3 text-xs font-extralight text-slate-400">
+          Free. No payment info required. Takes 30 seconds.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="animate-scale-in delay-800 w-full lg:w-[45%] flex justify-center lg:justify-end opacity-0">
+      <ImagePlaceholder
+        label="Photo: Kids playing soccer on indoor turf"
+        height="h-[300px] lg:h-[480px]"
+        class="max-w-[500px] lg:max-w-none rotate-1 hover:rotate-0 transition-all duration-500 ease-out"
+      />
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="relative z-10 bg-sky-50 border-t border-slate-100 py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="scroll-fade flex flex-col items-center text-center opacity-0 translate-y-4 transition-all duration-700 ease-out">
+        <span class="text-xs font-medium uppercase tracking-[0.08em] text-sky-400">What To Expect</span>
+        <h2 class="mt-3 text-3xl lg:text-4xl font-medium tracking-tight text-slate-900">Here's What Happens at a Trial</h2>
+      </div>
+
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {whatHappensCards.map((card, i) => (
+          <div class="scroll-fade flex flex-col items-center text-center opacity-0 translate-y-4 transition-all duration-500 ease-out" style={`transition-delay: ${150 + i * 150}ms;`}>
+            <div class:list={['w-16 h-16 rounded-full flex items-center justify-center shrink-0', card.color]}>
+              <iconify-icon icon={card.icon} class="text-3xl"></iconify-icon>
+            </div>
+            <h3 class="mt-4 text-lg font-normal text-slate-900">{card.title}</h3>
+            <p class="mt-2 text-sm font-extralight text-slate-500 leading-relaxed max-w-[280px]">{card.text}</p>
+            <div class="mt-4 w-full">
+              <ImagePlaceholder label={card.photo} height="h-[140px]" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Banner -->
+  <section class="scroll-fade relative z-10 bg-white border-t border-b border-slate-100 py-8 opacity-0 translate-y-4 transition-all duration-700 ease-out">
+    <div class="max-w-[960px] mx-auto px-6 flex flex-col md:flex-row items-center justify-center text-center gap-1.5 md:gap-2">
+      <span class="text-xl font-normal tracking-tight text-slate-900">One class. Zero cost. Zero commitment.</span>
+      <span class="text-xl font-extralight tracking-tight text-slate-400">Just bring your child and see.</span>
+    </div>
+  </section>
+
+  <!-- Form + FAQ -->
+  <section class="relative z-10 bg-slate-50 py-16 lg:py-24">
+    <div class="max-w-[1120px] mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+
+        <!-- Left: Image + Form + Success -->
+        <div class="lg:col-span-3 scroll-fade opacity-0 translate-y-4 transition-all duration-700 ease-out" style="transition-delay: 200ms;">
+          <ImagePlaceholder
+            label="Photo: Wide shot of indoor turf facility with kids training — warm lighting, clean space"
+            height="h-[240px]"
+            class="mb-6"
+          />
+
+          <TrialForm
+            formTitle="Reserve Your Free Trial"
+            buttonText="Save My Child's Spot"
+            dayLabel="Preferred Day"
+            programs={allPrograms}
+          />
+
+          <TrialSuccess steps={successSteps} />
+        </div>
+
+        <!-- Right: FAQ + Image -->
+        <div class="lg:col-span-2 scroll-fade opacity-0 translate-y-4 transition-all duration-700 ease-out" style="transition-delay: 350ms;">
+          <div class="sticky top-8">
+            <h3 class="text-lg font-medium tracking-tight text-slate-900 mb-6">Common Questions</h3>
+            <div class="space-y-6">
+              {faqItems.map((faq) => (
+                <FaqCard question={faq.question} answer={faq.answer} />
+              ))}
+            </div>
+
+            <div class="mt-6">
+              <ImagePlaceholder
+                label="Photo: Smiling kid in soccer kit giving thumbs up on turf"
+                height="h-[160px]"
+              />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-link to Trial Week -->
+  <section class="scroll-fade relative z-10 bg-white border-t border-slate-100 py-12 opacity-0 translate-y-4 transition-all duration-500 ease-out">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center text-center">
+      <span class="text-base font-extralight text-slate-500">Want more than one class?</span>
+      <a href="/free-trial-week" class="mt-2 group inline-flex items-center gap-1.5 text-base font-normal text-pink-500 hover:text-pink-600 transition-colors duration-300">
+        <span>Try our Free Trial Week — up to 3 classes</span>
+        <iconify-icon icon="solar:arrow-right-linear" class="text-lg transition-transform duration-300 ease-out group-hover:translate-x-1"></iconify-icon>
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .animate-fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-scale-in {
+    animation: scaleIn 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-800 { animation-delay: 800ms; }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('trial-form');
+    const formContainer = document.getElementById('form-container');
+    const successMessage = document.getElementById('success-message');
+    const friendToggle = document.getElementById('bring-friend-toggle');
+    const friendFields = document.getElementById('friend-fields');
+    const friendIcon = document.getElementById('friend-icon');
+
+    // Bring a Friend toggle
+    if (friendToggle && friendFields && friendIcon) {
+      friendToggle.addEventListener('click', () => {
+        const isHidden = friendFields.classList.contains('hidden');
+        friendFields.classList.toggle('hidden');
+        friendIcon.setAttribute('icon', isHidden ? 'solar:user-minus-linear' : 'solar:user-plus-linear');
+      });
+    }
+
+    // Form submit → show success
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (formContainer) formContainer.classList.add('hidden');
+        if (successMessage) successMessage.classList.remove('hidden');
+        successMessage?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  });
+</script>

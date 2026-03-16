@@ -1,0 +1,20 @@
+---
+interface Props {
+  label: string;
+  height?: string;
+  class?: string;
+}
+
+const { label, height = 'h-[240px]', class: className = '' } = Astro.props;
+---
+
+<div class:list={[
+  'w-full rounded-xl bg-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-100 overflow-hidden flex items-center justify-center p-6 group cursor-default relative',
+  height,
+  className,
+]}>
+  <span class="text-sm font-normal text-slate-500 text-center max-w-[320px] relative z-10 transition-transform duration-700 ease-out group-hover:scale-105">
+    {label}
+  </span>
+  <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/40 pointer-events-none z-20"></div>
+</div>

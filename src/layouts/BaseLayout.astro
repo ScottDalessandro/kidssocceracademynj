@@ -1,0 +1,129 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Indoor soccer training in Wyckoff, NJ for ages 18 months through high school. Rated 5.0 stars by 33 families on Google. Book a free trial — no payment required.' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | Kids Soccer Academy</title>
+  <meta name="description" content={description} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={`${title} | Kids Soccer Academy`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/kids-soccer-academy-logo.avif" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/avif" href="/kids-soccer-academy-logo.avif" />
+
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Kids Soccer Academy",
+    "image": "/kids-soccer-academy-logo.avif",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "681 Lawlins Rd #70",
+      "addressLocality": "Wyckoff",
+      "addressRegion": "NJ",
+      "postalCode": "07481",
+      "addressCountry": "US"
+    },
+    "telephone": "+12016964195",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "33",
+      "bestRating": "5"
+    }
+  })} />
+</head>
+<body class="bg-white text-slate-900 antialiased relative overflow-x-hidden">
+  <Nav />
+
+  <main>
+    <slot />
+  </main>
+
+  <Footer />
+
+  <!-- Sticky Mobile CTA -->
+  <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-slate-200 p-3 flex items-center justify-between gap-3 lg:hidden translate-y-full transition-transform duration-300">
+    <a href="/free-trial" class="flex-1 bg-pink-500 text-white text-sm font-medium py-3 rounded-lg hover:bg-pink-600 transition-colors duration-200 text-center">
+      Book Free Trial
+    </a>
+    <a href="tel:+12016964195" class="flex items-center justify-center w-12 h-12 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">
+      <iconify-icon icon="solar:phone-bold" width="22"></iconify-icon>
+    </a>
+  </div>
+
+  <!-- Scroll Animations & Sticky CTA Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Sticky mobile CTA — show after scrolling past hero
+      const stickyCta = document.getElementById('sticky-cta');
+      if (stickyCta) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 500) {
+            stickyCta.classList.remove('translate-y-full');
+            stickyCta.classList.add('translate-y-0');
+          } else {
+            stickyCta.classList.add('translate-y-full');
+            stickyCta.classList.remove('translate-y-0');
+          }
+        });
+      }
+
+      // Scroll animations
+      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+      const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Timeline section
+            if (entry.target.id === 'timeline-section') {
+              const header = entry.target.querySelector('#timeline-header');
+              if (header) { header.classList.remove('opacity-0', 'translate-y-4'); header.classList.add('opacity-100', 'translate-y-0'); }
+              const nodes = entry.target.querySelectorAll('.node-item');
+              nodes.forEach((node, i) => { setTimeout(() => { node.classList.remove('opacity-0'); node.classList.add('opacity-100'); }, 100 + (i * 100)); });
+              const badge = entry.target.querySelector('.timeline-badge');
+              if (badge) { setTimeout(() => { badge.classList.remove('opacity-0', 'translate-y-4'); badge.classList.add('opacity-100', 'translate-y-0'); }, 100 + (nodes.length * 100)); }
+            }
+            // Generic fade-in elements
+            else if (entry.target.classList.contains('scroll-fade')) {
+              entry.target.classList.remove('opacity-0', 'translate-y-4', 'translate-y-[15px]');
+              entry.target.classList.add('opacity-100', 'translate-y-0');
+              const icon = entry.target.querySelector('.why-us-icon');
+              if (icon) { icon.classList.remove('scale-[0.8]'); icon.classList.add('scale-100'); }
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all scroll-fade elements
+      document.querySelectorAll('.scroll-fade').forEach(el => scrollObserver.observe(el));
+      const timelineSection = document.getElementById('timeline-section');
+      if (timelineSection) scrollObserver.observe(timelineSection);
+    });
+  </script>
+</body>
+</html>

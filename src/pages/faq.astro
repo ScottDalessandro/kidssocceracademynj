@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+---
+
+<BaseLayout title="FAQ">
+
+  <!-- Hero -->
+  <section class="relative z-10 w-full bg-white">
+    <div class="max-w-7xl mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-16">
+      <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+        <p class="text-xs font-medium uppercase tracking-[0.08em] text-sky-400 mb-3">SUPPORT</p>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1]">Frequently Asked Questions</h1>
+        <p class="text-lg font-light text-slate-500 mt-5 leading-relaxed">Everything you need to know about Kids Soccer Academy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section class="relative z-10 w-full bg-slate-50 border-t border-slate-100">
+    <div class="max-w-3xl mx-auto px-6 py-20">
+
+      <!-- Getting Started -->
+      <div class="faq-category mb-12">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-sky-400 mb-6">Getting Started</h2>
+        <div class="flex flex-col gap-3">
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">How do I book a free trial?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">Visit our <a href="/free-trial" class="text-pink-500 hover:underline">free trial page</a> or call us at <a href="tel:+12016964195" class="text-pink-500 hover:underline">(201) 696-4195</a>. Pick your child's age group, choose a day, and show up. No payment required.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">What should my child bring to their first class?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">Comfortable athletic clothes and sneakers. No cleats needed — we play on indoor turf. Bring a water bottle.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">Can I watch my child's class?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">Absolutely. We have a dedicated viewing area where parents can watch every session.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Programs -->
+      <div class="faq-category mb-12">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-sky-400 mb-6">Programs</h2>
+        <div class="flex flex-col gap-3">
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">How do I know which program is right for my child?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">Programs are organized by age. Check our <a href="/schedule" class="text-pink-500 hover:underline">programs page</a> for details on each age group.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">Can my child try a different age group?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">We recommend starting with the age-appropriate group. Our coaches will assess and recommend if a different group is a better fit.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">What is Kids Fitness Academy?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">A cross-training program focused on agility, coordination, speed, and strength for young athletes of all sports. Available as an add-on to any soccer program. <a href="/programs/kids-fitness" class="text-pink-500 hover:underline">Learn more</a>.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Facility -->
+      <div class="faq-category mb-12">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-sky-400 mb-6">Facility</h2>
+        <div class="flex flex-col gap-3">
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">Where are you located?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">681 Lawlins Rd #70, Wyckoff, NJ 07481. We have a dedicated indoor facility with three turf fields.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">Is the facility climate-controlled?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">Yes. We maintain a comfortable temperature year-round. No weather cancellations.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">Is there parking?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">Yes, free parking is available at our facility.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Policies -->
+      <div class="faq-category">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-sky-400 mb-6">Policies</h2>
+        <div class="flex flex-col gap-3">
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">What is your cancellation policy?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">Please give 24 hours notice for cancellations. You can reschedule to any available class.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">Do you offer makeup classes?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">Yes. If your child misses a class, you can attend any other class in their age group that week.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">What are your payment options?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">We accept all major credit cards. Monthly and session packages available. Contact us for current pricing.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">Do you offer sibling discounts?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">Yes! Contact us for details on our family pricing options.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">What is your refund policy?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">We offer prorated refunds for unused sessions. Contact us to discuss your situation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left">
+              <span class="text-base font-medium text-slate-900 pr-4">Are your coaches background-checked?</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" width="20" class="faq-chevron text-slate-400 flex-shrink-0 transition-transform duration-300"></iconify-icon>
+            </button>
+            <div class="faq-content hidden px-6 pb-5">
+              <p class="text-sm font-light text-slate-500 leading-relaxed">Yes. All coaches undergo background checks and are CPR/First Aid certified.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <CtaBlock heading="Still have questions?" body="We're happy to help. Reach out anytime." buttonText="Contact Us" buttonHref="/contact" />
+
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const categories = document.querySelectorAll('.faq-category');
+
+    categories.forEach(category => {
+      const triggers = category.querySelectorAll('.faq-trigger');
+
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const item = trigger.closest('.faq-item');
+          const content = item?.querySelector('.faq-content');
+          const chevron = trigger.querySelector('.faq-chevron');
+          const isOpen = content && !content.classList.contains('hidden');
+
+          // Close all items in this category
+          category.querySelectorAll('.faq-item').forEach(otherItem => {
+            const otherContent = otherItem.querySelector('.faq-content');
+            const otherChevron = otherItem.querySelector('.faq-chevron');
+            if (otherContent) otherContent.classList.add('hidden');
+            if (otherChevron) otherChevron.style.transform = 'rotate(0deg)';
+          });
+
+          // Toggle current item
+          if (!isOpen && content) {
+            content.classList.remove('hidden');
+            if (chevron) chevron.style.transform = 'rotate(180deg)';
+          }
+        });
+      });
+    });
+  });
+</script>

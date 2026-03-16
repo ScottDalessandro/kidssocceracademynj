@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import schedule from '../data/schedule.json';
+import programs from '../data/programs.json';
+
+const allPrograms = programs.sort((a, b) => a.order - b.order);
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+---
+
+<BaseLayout title="Class Schedule">
+
+  <!-- Hero -->
+  <section class="relative z-10 w-full bg-white">
+    <div class="max-w-4xl mx-auto px-6 pt-24 pb-12 md:pt-32 md:pb-16 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">Class Schedule</h1>
+      <p class="text-lg font-light text-slate-500 mt-4">Find the perfect class for your child.</p>
+    </div>
+  </section>
+
+  <!-- Schedule Section -->
+  <section class="relative z-10 w-full bg-slate-50 border-t border-slate-100">
+    <div class="max-w-5xl mx-auto px-6 py-16">
+
+      <!-- Program Tabs -->
+      <div class="flex flex-wrap gap-2 mb-6" id="program-tabs">
+        <button data-tab="all" class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 bg-pink-500 text-white">
+          All Programs
+        </button>
+        {allPrograms.map((p) => (
+          <button data-tab={p.slug} class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 bg-slate-100 text-slate-700 hover:bg-slate-200">
+            {p.name}
+          </button>
+        ))}
+      </div>
+
+      <!-- Day Filters -->
+      <div class="flex flex-wrap gap-2 mb-8" id="day-filters">
+        <button data-day="all" class="day-btn px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 bg-slate-900 text-white">
+          All
+        </button>
+        {days.map((d) => (
+          <button data-day={d} class="day-btn px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 bg-slate-100 text-slate-700 hover:bg-slate-200">
+            {d}
+          </button>
+        ))}
+      </div>
+
+      <!-- Desktop Table -->
+      <div class="hidden md:block bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200">
+              <th class="text-left text-xs font-semibold uppercase tracking-wider text-slate-500 px-6 py-4">Day</th>
+              <th class="text-left text-xs font-semibold uppercase tracking-wider text-slate-500 px-6 py-4">Time</th>
+              <th class="text-left text-xs font-semibold uppercase tracking-wider text-slate-500 px-6 py-4">Program</th>
+              <th class="text-left text-xs font-semibold uppercase tracking-wider text-slate-500 px-6 py-4">Age Range</th>
+              <th class="text-left text-xs font-semibold uppercase tracking-wider text-slate-500 px-6 py-4">Duration</th>
+            </tr>
+          </thead>
+          <tbody id="schedule-table-body">
+            {schedule.map((item) => (
+              <tr class="schedule-row border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors" data-slug={item.slug} data-day={item.day.slice(0, 3)}>
+                <td class="px-6 py-4 text-sm font-medium text-slate-900">{item.day}</td>
+                <td class="px-6 py-4 text-sm font-light text-slate-700">{item.time}</td>
+                <td class="px-6 py-4">
+                  <a href={`/programs/${item.slug}`} class="text-sm font-medium text-pink-500 hover:text-pink-600 hover:underline transition-colors">
+                    {item.program}
+                  </a>
+                </td>
+                <td class="px-6 py-4 text-sm font-light text-slate-700">{item.ageRange}</td>
+                <td class="px-6 py-4 text-sm font-light text-slate-700">{item.duration}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Cards -->
+      <div class="md:hidden flex flex-col gap-3" id="schedule-cards">
+        {schedule.map((item) => (
+          <div class="schedule-card bg-white rounded-xl shadow-sm border border-slate-200 p-5" data-slug={item.slug} data-day={item.day.slice(0, 3)}>
+            <div class="flex items-center justify-between mb-2">
+              <a href={`/programs/${item.slug}`} class="text-base font-semibold text-pink-500 hover:text-pink-600 hover:underline transition-colors">
+                {item.program}
+              </a>
+              <span class="text-xs font-medium text-slate-400 bg-slate-50 rounded-full px-3 py-1">{item.duration}</span>
+            </div>
+            <div class="flex items-center gap-4 text-sm font-light text-slate-700">
+              <span class="flex items-center gap-1.5">
+                <iconify-icon icon="solar:calendar-linear" width="16" class="text-slate-400"></iconify-icon>
+                {item.day}
+              </span>
+              <span class="flex items-center gap-1.5">
+                <iconify-icon icon="solar:clock-circle-linear" width="16" class="text-slate-400"></iconify-icon>
+                {item.time}
+              </span>
+            </div>
+            <div class="mt-2 text-sm font-light text-slate-500">
+              Ages {item.ageRange}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-12">
+        <p class="text-base font-light text-slate-500">No classes match your filters. Try a different combination.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CtaBlock heading="Found your class?" body="Book a free trial — no payment required." />
+
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let activeTab = 'all';
+    let activeDay = 'all';
+
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const dayBtns = document.querySelectorAll('.day-btn');
+    const rows = document.querySelectorAll('.schedule-row');
+    const cards = document.querySelectorAll('.schedule-card');
+    const emptyState = document.getElementById('empty-state');
+    const tableContainer = document.querySelector('.hidden.md\\:block');
+    const cardContainer = document.getElementById('schedule-cards');
+
+    function updateDisplay() {
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const slug = row.getAttribute('data-slug');
+        const day = row.getAttribute('data-day');
+        const matchTab = activeTab === 'all' || slug === activeTab;
+        const matchDay = activeDay === 'all' || day === activeDay;
+        if (matchTab && matchDay) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      cards.forEach(card => {
+        const slug = card.getAttribute('data-slug');
+        const day = card.getAttribute('data-day');
+        const matchTab = activeTab === 'all' || slug === activeTab;
+        const matchDay = activeDay === 'all' || day === activeDay;
+        if (matchTab && matchDay) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (emptyState) {
+        emptyState.classList.toggle('hidden', visibleCount > 0);
+      }
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeTab = btn.getAttribute('data-tab');
+        tabBtns.forEach(b => {
+          b.classList.remove('bg-pink-500', 'text-white');
+          b.classList.add('bg-slate-100', 'text-slate-700');
+        });
+        btn.classList.remove('bg-slate-100', 'text-slate-700');
+        btn.classList.add('bg-pink-500', 'text-white');
+        updateDisplay();
+      });
+    });
+
+    dayBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeDay = btn.getAttribute('data-day');
+        dayBtns.forEach(b => {
+          b.classList.remove('bg-slate-900', 'text-white');
+          b.classList.add('bg-slate-100', 'text-slate-700');
+        });
+        btn.classList.remove('bg-slate-100', 'text-slate-700');
+        btn.classList.add('bg-slate-900', 'text-white');
+        updateDisplay();
+      });
+    });
+  });
+</script>

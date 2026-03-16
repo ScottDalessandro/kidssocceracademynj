@@ -1,0 +1,142 @@
+---
+interface Program {
+  slug: string;
+  name: string;
+  ageRange: string;
+}
+
+interface Props {
+  formTitle: string;
+  buttonText: string;
+  dayLabel: string;
+  programs: Program[];
+}
+
+const { formTitle, buttonText, dayLabel, programs } = Astro.props;
+
+const inputClass = 'w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-900 outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors bg-white';
+const labelClass = 'text-sm font-normal text-slate-700';
+const selectWrapperClass = 'relative';
+---
+
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 lg:p-8" id="form-container">
+  <h3 class="text-xl font-medium tracking-tight text-slate-900 mb-6">{formTitle}</h3>
+
+  <form id="trial-form" class="space-y-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <!-- Parent Name -->
+      <div class="space-y-1.5">
+        <label for="parent-name" class={labelClass}>Parent's Name</label>
+        <input type="text" id="parent-name" name="parentName" required class={inputClass} placeholder="Your full name" />
+      </div>
+
+      <!-- Child Name -->
+      <div class="space-y-1.5">
+        <label for="child-name" class={labelClass}>Child's Name</label>
+        <input type="text" id="child-name" name="childName" required class={inputClass} placeholder="Your child's name" />
+      </div>
+
+      <!-- Child Age -->
+      <div class="space-y-1.5">
+        <label for="child-age" class={labelClass}>Child's Age</label>
+        <div class={selectWrapperClass}>
+          <select id="child-age" name="childAge" required class:list={[inputClass, 'appearance-none']}>
+            <option value="" disabled selected>Select age range</option>
+            <option value="under-2">Under 2</option>
+            <option value="2-3">2-3</option>
+            <option value="3-4">3-4</option>
+            <option value="4-5">4-5</option>
+            <option value="5-7">5-7</option>
+            <option value="7-12">7-12</option>
+          </select>
+          <iconify-icon icon="solar:alt-arrow-down-linear" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></iconify-icon>
+        </div>
+      </div>
+
+      <!-- Program -->
+      <div class="space-y-1.5">
+        <label for="program" class={labelClass}>Preferred Program</label>
+        <div class={selectWrapperClass}>
+          <select id="program" name="program" required class:list={[inputClass, 'appearance-none']}>
+            <option value="" disabled selected>Select a program</option>
+            {programs.map((p) => (
+              <option value={p.slug}>{p.name} ({p.ageRange})</option>
+            ))}
+          </select>
+          <iconify-icon icon="solar:alt-arrow-down-linear" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></iconify-icon>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="space-y-1.5">
+        <label for="email" class={labelClass}>Email</label>
+        <input type="email" id="email" name="email" required class={inputClass} placeholder="you@example.com" />
+      </div>
+
+      <!-- Phone -->
+      <div class="space-y-1.5">
+        <label for="phone" class={labelClass}>Phone</label>
+        <input type="tel" id="phone" name="phone" required class={inputClass} placeholder="(201) 555-0123" />
+      </div>
+
+      <!-- Preferred Day -->
+      <div class="space-y-1.5 md:col-span-2">
+        <label for="preferred-day" class={labelClass}>{dayLabel}</label>
+        <div class={selectWrapperClass}>
+          <select id="preferred-day" name="preferredDay" required class:list={[inputClass, 'appearance-none']}>
+            <option value="" disabled selected>Select a day</option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+          </select>
+          <iconify-icon icon="solar:alt-arrow-down-linear" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></iconify-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bring a Friend Toggle -->
+    <div class="pt-2">
+      <button type="button" id="bring-friend-toggle" class="group flex items-center gap-2 text-sm text-pink-500 hover:text-pink-600 transition-colors">
+        <iconify-icon id="friend-icon" icon="solar:user-plus-linear" class="text-lg transition-transform duration-300"></iconify-icon>
+        <span class="font-normal">Bring a Friend</span>
+        <span class="font-extralight text-slate-400">(It helps kids feel comfortable)</span>
+      </button>
+
+      <div id="friend-fields" class="hidden mt-4 pl-4 border-l-[3px] border-pink-100 space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label for="friend-child-name" class={labelClass}>Friend's Child Name</label>
+            <input type="text" id="friend-child-name" name="friendChildName" class={inputClass} placeholder="Friend's child name" />
+          </div>
+          <div class="space-y-1.5">
+            <label for="friend-parent-name" class={labelClass}>Friend's Parent Name</label>
+            <input type="text" id="friend-parent-name" name="friendParentName" class={inputClass} placeholder="Friend's parent name" />
+          </div>
+          <div class="space-y-1.5 md:col-span-2">
+            <label for="friend-parent-contact" class={labelClass}>Friend's Contact (Email or Phone)</label>
+            <input type="text" id="friend-parent-contact" name="friendParentContact" class={inputClass} placeholder="Phone or email" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="pt-6 border-t border-slate-100 flex flex-col items-center">
+      <div class="flex items-center gap-1.5 mb-3 text-slate-400">
+        <iconify-icon icon="solar:clock-circle-linear" class="text-sm"></iconify-icon>
+        <span class="text-xs font-normal">Most parents book within 2 minutes</span>
+      </div>
+      <button type="submit" class="w-full group relative flex items-center justify-center gap-2 bg-pink-500 text-white text-base font-normal py-4 px-8 rounded-xl hover:bg-pink-600 hover:scale-[1.02] shadow-md transition-all duration-300 ease-out">
+        <span>{buttonText}</span>
+        <iconify-icon icon="solar:arrow-right-linear" class="text-xl transition-transform duration-300 ease-out group-hover:translate-x-1"></iconify-icon>
+      </button>
+      <span class="text-xs font-normal text-slate-400 mt-3 text-center">
+        Free. No payment info required. Takes 30 seconds.
+      </span>
+    </div>
+  </form>
+</div>

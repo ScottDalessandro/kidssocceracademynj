@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBlock from '../../components/CtaBlock.astro';
+import programs from '../../data/programs.json';
+import schedule from '../../data/schedule.json';
+
+const program = programs.find(p => p.slug === 'kids-fitness');
+const programSchedule = schedule.filter(s => s.slug === 'kids-fitness');
+const nextProg = program.nextProgram ? programs.find(p => p.slug === program.nextProgram) : null;
+const prevProg = program.prevProgram ? programs.find(p => p.slug === program.prevProgram) : null;
+const paragraphs = program.longDescription.split('\n\n');
+---
+
+<BaseLayout title={`${program.name} — Ages ${program.ageRange}`}>
+  <!-- Hero Banner -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-amber-400 to-amber-500 pt-28 pb-16 md:pt-32 md:pb-24">
+    <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[length:20px_20px] opacity-100"></div>
+    <div class="container mx-auto max-w-6xl px-4 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-center md:gap-12">
+        <div class="flex-1 text-center md:text-left">
+          <img src="/kids-fitness-logo.avif" alt="Kids Fitness Academy" class="h-20 w-auto mb-6 mx-auto md:mx-0" />
+          <div class="inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-sm font-medium text-white mb-6">
+            <iconify-icon icon={program.icon} width="18"></iconify-icon>
+            <span>Ages {program.ageRange}</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">{program.name}</h1>
+          <p class="text-lg md:text-xl text-white/90 font-light">{program.sessionLength} sessions · Ages {program.ageRange}</p>
+          <a href="/free-trial" class="inline-block mt-6 bg-white text-amber-600 font-medium px-6 py-3 rounded-xl hover:bg-white/90 shadow-md transition-colors duration-200">Book a Free Trial</a>
+        </div>
+        <div class="mt-8 md:mt-0 md:w-[45%] flex-shrink-0">
+          <div class="w-full h-48 md:h-64 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+            <span class="text-base font-medium text-white/80 px-4 text-center">Kids doing agility exercises</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add-on Notice -->
+  <section class="py-8">
+    <div class="container mx-auto max-w-3xl px-4">
+      <div class="flex items-center gap-3 rounded-xl bg-amber-50 border border-amber-200 px-6 py-4">
+        <iconify-icon icon="lucide:info" class="text-amber-500 flex-shrink-0" width="20"></iconify-icon>
+        <p class="text-amber-800 font-medium">Available as an add-on to any soccer program.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto max-w-3xl px-4 scroll-fade">
+      <div class="space-y-6 text-lg text-slate-700 font-light leading-relaxed">
+        {paragraphs.map(p => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- What They'll Learn -->
+  <section class="py-16 md:py-24 bg-slate-50">
+    <div class="container mx-auto max-w-3xl px-4 scroll-fade">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-10 text-center">What They'll Learn</h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {program.whatTheyLearn.map(item => (
+          <div class="flex flex-col items-center text-center bg-white rounded-xl p-6 shadow-sm">
+            <div class="w-14 h-14 rounded-full bg-amber-100 text-amber-500 flex items-center justify-center mb-4">
+              <iconify-icon icon={item.icon} width="28"></iconify-icon>
+            </div>
+            <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 mb-2">{item.title}</h3>
+            <p class="text-sm text-slate-500 font-light leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  {programSchedule.length > 0 && (
+    <section class="py-16 md:py-24">
+      <div class="container mx-auto max-w-3xl px-4 scroll-fade">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-10 text-center">Class Schedule</h2>
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+          <table class="w-full">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200">
+                <th class="text-left px-6 py-4 text-sm font-semibold text-slate-900">Day</th>
+                <th class="text-left px-6 py-4 text-sm font-semibold text-slate-900">Time</th>
+                <th class="text-left px-6 py-4 text-sm font-semibold text-slate-900">Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              {programSchedule.map(s => (
+                <tr class="border-b border-slate-100 last:border-0">
+                  <td class="px-6 py-4 text-slate-700 font-light">{s.day}</td>
+                  <td class="px-6 py-4 text-slate-700 font-light">{s.time}</td>
+                  <td class="px-6 py-4 text-slate-700 font-light">{s.duration}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Testimonial -->
+  {program.testimonial && (
+    <section class="py-16 md:py-24 bg-slate-50">
+      <div class="container mx-auto max-w-3xl px-4 scroll-fade">
+        <blockquote class="relative bg-white rounded-xl shadow-sm p-8 md:p-12">
+          <iconify-icon icon="lucide:quote" class="text-amber-300 mb-4" width="36"></iconify-icon>
+          <p class="text-xl md:text-2xl text-slate-700 font-light italic leading-relaxed">{program.testimonial}</p>
+        </blockquote>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <CtaBlock heading={`Book a Free Trial for ${program.name}`} />
+</BaseLayout>
