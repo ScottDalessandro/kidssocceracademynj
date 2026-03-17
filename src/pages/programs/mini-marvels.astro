@@ -11,7 +11,7 @@ const prevProg = program.prevProgram ? programs.find(p => p.slug === program.pre
 const paragraphs = program.longDescription.split('\n\n');
 ---
 
-<BaseLayout title={`${program.name} — Ages ${program.ageRange}`}>
+<BaseLayout title={`${program.name} — Ages ${program.ageRange}`} description={`${program.name} soccer classes for ages ${program.ageRange} at Kids Soccer Academy in Wyckoff, NJ. ${program.timelineTeaser} Book a free trial today.`}>
   <!-- Hero Banner -->
   <section class="relative overflow-hidden bg-gradient-to-br from-emerald-400 to-emerald-500 pt-28 pb-16 md:pt-32 md:pb-24">
     <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[length:20px_20px] opacity-100"></div>

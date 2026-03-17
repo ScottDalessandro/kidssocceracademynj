@@ -9,6 +9,8 @@ interface Props {
 }
 
 const { title, description = 'Indoor soccer training in Wyckoff, NJ for ages 18 months through high school. Rated 5.0 stars by 33 families on Google. Book a free trial — no payment required.' } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -18,12 +20,22 @@ const { title, description = 'Indoor soccer training in Wyckoff, NJ for ages 18 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} | Kids Soccer Academy</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
 
   <!-- Open Graph -->
   <meta property="og:title" content={`${title} | Kids Soccer Academy`} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
   <meta property="og:image" content="/kids-soccer-academy-logo.avif" />
+  <meta property="og:site_name" content="Kids Soccer Academy" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={`${title} | Kids Soccer Academy`} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="/kids-soccer-academy-logo.avif" />
 
   <!-- Fonts (non-render-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,6 +49,9 @@ const { title, description = 'Indoor soccer training in Wyckoff, NJ for ages 18 
 
   <!-- Favicon -->
   <link rel="icon" type="image/avif" href="/kids-soccer-academy-logo.avif" />
+
+  <!-- Page-specific head content -->
+  <slot name="head" />
 
   <!-- LocalBusiness Schema -->
   <script type="application/ld+json" set:html={JSON.stringify({

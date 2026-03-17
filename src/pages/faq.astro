@@ -1,9 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBlock from '../components/CtaBlock.astro';
+
+const faqData = [
+  { q: 'How do I book a free trial?', a: 'Visit our free trial page or call us at (201) 696-4195. Pick your child\'s age group, choose a day, and show up. No payment required.' },
+  { q: 'What should my child bring to their first class?', a: 'Comfortable athletic clothes and sneakers. No cleats needed — we play on indoor turf. Bring a water bottle.' },
+  { q: 'Can I watch my child\'s class?', a: 'Absolutely. We have a dedicated viewing area where parents can watch every session.' },
+  { q: 'How do I know which program is right for my child?', a: 'Programs are organized by age. Check our programs page for details on each age group.' },
+  { q: 'Can my child try a different age group?', a: 'We recommend starting with the age-appropriate group. Our coaches will assess and recommend if a different group is a better fit.' },
+  { q: 'What is Kids Fitness Academy?', a: 'A cross-training program focused on agility, coordination, speed, and strength for young athletes of all sports. Available as an add-on to any soccer program.' },
+  { q: 'Where are you located?', a: '681 Lawlins Rd #70, Wyckoff, NJ 07481. We have a dedicated indoor facility with three turf fields.' },
+  { q: 'Is the facility climate-controlled?', a: 'Yes. We maintain a comfortable temperature year-round. No weather cancellations.' },
+  { q: 'Is there parking?', a: 'Yes, free parking is available at our facility.' },
+  { q: 'What is your cancellation policy?', a: 'Please give 24 hours notice for cancellations. You can reschedule to any available class.' },
+  { q: 'Do you offer makeup classes?', a: 'Yes. If your child misses a class, you can attend any other class in their age group that week.' },
+  { q: 'What are your payment options?', a: 'We accept all major credit cards. Monthly and session packages available. Contact us for current pricing.' },
+  { q: 'Do you offer sibling discounts?', a: 'Yes! Contact us for details on our family pricing options.' },
+  { q: 'What is your refund policy?', a: 'We offer prorated refunds for unused sessions. Contact us to discuss your situation.' },
+  { q: 'Are your coaches background-checked?', a: 'Yes. All coaches undergo background checks and are CPR/First Aid certified.' },
+];
 ---
 
-<BaseLayout title="FAQ">
+<BaseLayout title="FAQ" description="Frequently asked questions about Kids Soccer Academy in Wyckoff, NJ. Learn about free trials, programs, facility details, cancellation policies, and more.">
+
+<!-- FAQ Schema -->
+<script slot="head" type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+})} />
 
   <!-- Hero -->
   <section class="relative z-10 w-full bg-white">
