@@ -47,6 +47,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <!-- Icons (deferred) -->
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
 
+  <!-- Preload LCP image (hero poster) -->
+  <link rel="preload" as="image" type="image/webp" href="/images/hero-poster.webp" />
+
   <!-- Favicon -->
   <link rel="icon" type="image/avif" href="/kids-soccer-academy-logo.avif" />
 
