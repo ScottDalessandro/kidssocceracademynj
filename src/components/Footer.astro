@@ -12,25 +12,25 @@ const soccerPrograms = programs.filter(p => !p.isAddon).sort((a, b) => a.order -
       <!-- Column 1: Brand -->
       <div>
         <img src="/kids-soccer-academy-logo.avif" alt="Kids Soccer Academy" class="h-16 w-auto" />
-        <p class="mt-3 text-sm font-light text-slate-400">
+        <p class="mt-3 text-sm font-light text-slate-300">
           681 Lawlins Rd #70, Wyckoff, NJ 07481
         </p>
-        <a href="tel:+12016964195" class="block mt-1 text-sm font-normal text-slate-400 hover:text-white transition-colors duration-200">
+        <a href="tel:+12016964195" class="block mt-1 text-sm font-normal text-slate-300 hover:text-white transition-colors duration-200">
           (201) 696-4195
         </a>
 
         <!-- Social Icons -->
         <div class="mt-5 flex items-center gap-4">
-          <a href="https://www.facebook.com/p/Kids-Soccer-Academy-61573193837254/" target="_blank" rel="noopener" class="text-slate-400 hover:text-white transition-colors duration-200">
+          <a href="https://www.facebook.com/p/Kids-Soccer-Academy-61573193837254/" target="_blank" rel="noopener" aria-label="Facebook" class="text-slate-400 hover:text-white transition-colors duration-200">
             <iconify-icon icon="simple-icons:facebook" width="20"></iconify-icon>
           </a>
-          <a href="#" class="text-slate-400 hover:text-white transition-colors duration-200">
+          <a href="#" aria-label="Instagram" class="text-slate-400 hover:text-white transition-colors duration-200">
             <iconify-icon icon="simple-icons:instagram" width="20"></iconify-icon>
           </a>
-          <a href="#" class="text-slate-400 hover:text-white transition-colors duration-200">
+          <a href="#" aria-label="YouTube" class="text-slate-400 hover:text-white transition-colors duration-200">
             <iconify-icon icon="simple-icons:youtube" width="20"></iconify-icon>
           </a>
-          <a href="#" class="text-slate-400 hover:text-white transition-colors duration-200">
+          <a href="#" aria-label="TikTok" class="text-slate-400 hover:text-white transition-colors duration-200">
             <iconify-icon icon="simple-icons:tiktok" width="20"></iconify-icon>
           </a>
         </div>
@@ -39,7 +39,7 @@ const soccerPrograms = programs.filter(p => !p.isAddon).sort((a, b) => a.order -
       <!-- Column 2: Programs -->
       <div>
         <h4 class="text-sm font-medium text-white uppercase tracking-widest">Programs</h4>
-        <ul class="mt-4 flex flex-col text-sm font-light text-slate-400 leading-loose">
+        <ul class="mt-4 flex flex-col text-sm font-light text-slate-300 leading-loose">
           {soccerPrograms.map(p => (
             <li><a href={`/programs/${p.slug}`} class="hover:text-white transition-colors duration-200 block">{p.name}</a></li>
           ))}
@@ -50,7 +50,7 @@ const soccerPrograms = programs.filter(p => !p.isAddon).sort((a, b) => a.order -
       <!-- Column 3: Quick Links -->
       <div>
         <h4 class="text-sm font-medium text-white uppercase tracking-widest">Quick Links</h4>
-        <ul class="mt-4 flex flex-col text-sm font-light text-slate-400 leading-loose">
+        <ul class="mt-4 flex flex-col text-sm font-light text-slate-300 leading-loose">
           <li><a href="/schedule" class="hover:text-white transition-colors duration-200 block">Schedule</a></li>
           <li><a href="/about" class="hover:text-white transition-colors duration-200 block">About Our Coaches</a></li>
           <li><a href="/birthday-parties" class="hover:text-white transition-colors duration-200 block">Birthday Parties</a></li>
@@ -63,7 +63,7 @@ const soccerPrograms = programs.filter(p => !p.isAddon).sort((a, b) => a.order -
       <!-- Column 4: Get Started -->
       <div>
         <h4 class="text-sm font-medium text-white uppercase tracking-widest">Get Started</h4>
-        <p class="mt-4 text-sm font-light text-slate-400 leading-relaxed">
+        <p class="mt-4 text-sm font-light text-slate-300 leading-relaxed">
           Book a free trial class for your child. No payment, no commitment.
         </p>
         <a href="/free-trial" class="inline-flex items-center justify-center mt-4 bg-pink-500 text-white text-sm font-medium py-3 px-6 rounded-lg hover:bg-pink-600 transition-colors duration-200">

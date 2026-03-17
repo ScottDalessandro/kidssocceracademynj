@@ -22,7 +22,7 @@ function isActive(path: string) {
     <div class="hidden lg:flex items-center gap-7 ml-auto mr-8">
       <!-- Programs Dropdown -->
       <div class="relative group">
-        <button class={`text-sm font-normal transition-colors duration-200 flex items-center gap-1 ${isActive('/programs') ? 'text-pink-500' : 'text-slate-700 hover:text-pink-500'}`}>
+        <button aria-haspopup="true" aria-expanded="false" class={`text-sm font-normal transition-colors duration-200 flex items-center gap-1 ${isActive('/programs') ? 'text-pink-500' : 'text-slate-700 hover:text-pink-500'}`}>
           Programs
           <iconify-icon icon="solar:alt-arrow-down-linear" width="16" class="transition-transform duration-200 group-hover:rotate-180"></iconify-icon>
         </button>
@@ -62,7 +62,7 @@ function isActive(path: string) {
     </div>
 
     <!-- Mobile Menu Toggle -->
-    <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center text-slate-700 hover:text-pink-500 transition-colors">
+    <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" class="lg:hidden flex items-center justify-center text-slate-700 hover:text-pink-500 transition-colors">
       <iconify-icon icon="solar:hamburger-menu-linear" width="28"></iconify-icon>
     </button>
   </div>
@@ -123,8 +123,10 @@ function isActive(path: string) {
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenuBtn && mobileMenu) {
       mobileMenuBtn.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
         mobileMenu.classList.toggle('hidden');
         mobileMenu.classList.toggle('flex');
+        mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
       });
     }
 
